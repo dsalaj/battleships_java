@@ -152,10 +152,12 @@ public class ships {
 
   }
 
-  //TODO: refactor main
-  //TODO: divide into classes
-  //TODO: optimize the speed of spawning (prevent stack overflow)
+  // TODO: refactor main
+  // TODO: divide into classes
+  // TODO: optimize the speed of spawning (prevent stack overflow)
   // idea: only start with random number + continue with linear search
+  // TODO: set default values for field size and ships
+  // TODO  if field set but ships not; calculate appropriate values
 
   public static void main( String[] args ) {
 
