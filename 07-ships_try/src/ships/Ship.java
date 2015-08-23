@@ -8,10 +8,12 @@ import javafx.scene.shape.Rectangle;
 public class Ship extends Group {
 
 	BooleanProperty alive = new SimpleBooleanProperty(true);
+	BooleanProperty visible = new SimpleBooleanProperty(false);
+	Rectangle r;
 
 	public Ship(SeaMap map) {
-		Rectangle r = new Rectangle(20, 20);
-		r.setFill(Constants.liveColor);
+		r = new Rectangle(20, 20);
+		r.setFill(Constants.seaColor);
 		this.getChildren().add(r);
 
         alive.addListener((e, o, n) -> {
@@ -24,6 +26,11 @@ public class Ship extends Group {
         		map.shipKilled();
         	}
         });
+	}
+
+	public void toggleColor() {
+		r.setFill(visible.get()? Constants.seaColor : Constants.liveColor);
+		visible.set(!visible.get());
 	}
 
 }

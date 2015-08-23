@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 
 public class Main extends Application {
 	@Override
@@ -25,15 +26,26 @@ public class Main extends Application {
             	}
             });
 
-            Button button = new Button("Generate map");
-            button.setOnAction(new EventHandler<ActionEvent>() {
+            Button genButton = new Button("Generate map");
+            genButton.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent e) {
 	            	map.generate(4, 5);
 	            }
 	        });
 
-            root.setBottom(button);
+            Button showButton = new Button("Show ships");
+            showButton.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent e) {
+	                map.toggleShowShips();
+	            }
+	        });
+
+            VBox vbox = new VBox(10);
+            vbox.getChildren().addAll(genButton, showButton);
+            root.setBottom(vbox);
+
 			root.setCenter(map);
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
