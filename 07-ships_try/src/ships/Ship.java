@@ -8,7 +8,7 @@ import javafx.scene.shape.Rectangle;
 public class Ship extends Group {
 
 	BooleanProperty alive = new SimpleBooleanProperty(true);
-	BooleanProperty visible = new SimpleBooleanProperty(false);
+	private BooleanProperty visible = new SimpleBooleanProperty(false);
 	Rectangle r;
 
 	public Ship(SeaMap map) {
@@ -19,7 +19,7 @@ public class Ship extends Group {
         alive.addListener((e, o, n) -> {
             r.setFill(n ? Constants.liveColor : Constants.deadColor);
         });
-        visible.addListener((e, o, n) -> {
+        getVisible().addListener((e, o, n) -> {
             r.setFill(n ? Constants.liveColor : Constants.seaColor);
         });
         setOnMouseClicked(m -> {
@@ -32,7 +32,11 @@ public class Ship extends Group {
 	}
 
 	public void toggleColor() {
-		visible.set(!visible.get());
+		getVisible().set(!getVisible().get());
+	}
+
+	public BooleanProperty getVisible() {
+		return visible;
 	}
 
 }
