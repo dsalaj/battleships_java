@@ -19,6 +19,9 @@ public class Ship extends Group {
         alive.addListener((e, o, n) -> {
             r.setFill(n ? Constants.liveColor : Constants.deadColor);
         });
+        visible.addListener((e, o, n) -> {
+            r.setFill(n ? Constants.liveColor : Constants.seaColor);
+        });
         setOnMouseClicked(m -> {
         	map.click();
         	if(alive.get()) {
@@ -29,7 +32,6 @@ public class Ship extends Group {
 	}
 
 	public void toggleColor() {
-		r.setFill(visible.get()? Constants.seaColor : Constants.liveColor);
 		visible.set(!visible.get());
 	}
 
