@@ -8,7 +8,7 @@ import javafx.scene.Group;
 
 public class SeaMap extends Group {
 
-	public BooleanProperty ships_alive = new SimpleBooleanProperty(true);
+	public BooleanProperty ships_alive = new SimpleBooleanProperty(false);
 	private int no_ships_alive;
 	private int clicks;
 	private ArrayList<Ship> ships = new ArrayList<Ship>();
@@ -20,7 +20,6 @@ public class SeaMap extends Group {
 	public void generate(int x, int y) {
 		no_ships_alive = 0;
 		clicks = 0;
-		ships_alive.set(true);
 		for(int row = 0; row < x; row++) {
 			for(int col = 0; col < y; col++) {
 				boolean decision = (Math.random() > 0.7) ? true : false;
@@ -31,15 +30,16 @@ public class SeaMap extends Group {
 				getChildren().add(g);
 				if(decision)
 				{
+					ships_alive.set(true);
 					no_ships_alive++;
-					ships.add((Ship)g);
+					getShips().add((Ship)g);
 				}
 			}
 		}
 	}
 
 	public void toggleShowShips() {
-		for(Ship s : ships) {
+		for(Ship s : getShips()) {
 			s.toggleColor();
 		}
 	}
@@ -57,4 +57,11 @@ public class SeaMap extends Group {
 		return clicks;
 	}
 
+	public ArrayList<Ship> getShips() {
+		return ships;
+	}
+
+	public BooleanProperty getShips_alive() {
+		return ships_alive;
+	}
 }
