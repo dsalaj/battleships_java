@@ -1,4 +1,4 @@
-package shipTests;
+package shipsTests;
 
 import static org.junit.Assert.*;
 
