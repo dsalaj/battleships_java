@@ -11,8 +11,6 @@ public class Empty extends Group {
 		this.getChildren().add(r);
         setOnMouseClicked(m -> {
         	map.click();
-
         });
 	}
-
 }

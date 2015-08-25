@@ -11,14 +11,11 @@ public class ShipTest {
 
 	@Test
 	public void testToggleColor() {
-
 		SeaMap map = new SeaMap(1, 1);
 	    Ship tester = new Ship(map);
 
 	    assertEquals("visible must be false after initialization", false, tester.getVisible().get());
 	    tester.toggleColor();
 	    assertEquals("visible must be true after first toggle", true, tester.getVisible().get());
-
 	}
-
 }
